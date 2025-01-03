@@ -1,0 +1,96 @@
+.container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  color: #20292d;
+}
+
+.subtitle {
+  font-family: "Poppins", serif;
+  color: #9a9a9a;
+  font-size: 0.875rem;
+}
+
+.form {
+  width: 384px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.errorMessage {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  color: #d70b0b;
+  font-size: 0.75rem;
+  margin-left: 4px;
+}
+
+.signInButton {
+  font-size: 1rem;
+  background-color: #20292d;
+  border-radius: 12px;
+  padding: 12px;
+  color: #fff;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  text-transform: none;
+}
+
+.signInButton:hover {
+  background-color: #20292de0;
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .form {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  .form {
+    width: 384px;
+    background-color: #dcdcdc56;
+    padding: 24px;
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container,
+  .form {
+    width: 90%;
+  }
+
+  .signInButton {
+    padding: 8px;
+    font-size: 0.875rem;
+  }
+}

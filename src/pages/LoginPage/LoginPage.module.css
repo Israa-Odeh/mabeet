@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url("/src/assets/Login/background.avif");
+  background-size: cover;
+}
+
+.leftSideImage {
+  height: 100%;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    justify-content: center;
+  }
+
+  .leftSideImage {
+    display: none;
+  }
+}
