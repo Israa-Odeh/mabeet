@@ -7,6 +7,7 @@ import {
   UserPage,
   SearchResultsPage,
   HotelPage,
+  CheckoutPage,
 } from "@pages/index";
 
 export const router = createBrowserRouter([
@@ -37,6 +38,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute role="User">
             <HotelPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <ProtectedRoute role="User">
+            <CheckoutPage />
           </ProtectedRoute>
         ),
       },

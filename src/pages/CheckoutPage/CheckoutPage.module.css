@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  width: 90%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.content {
+  padding: 24px;
+}
+
+.footer {
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+.button {
+  width: 100%;
+  padding: 14px;
+  background-color: #20292d;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Poppins", serif;
+  text-transform: none;
+}
+
+.button:hover {
+  background-color: rgba(32, 41, 45, 0.872);
+}
