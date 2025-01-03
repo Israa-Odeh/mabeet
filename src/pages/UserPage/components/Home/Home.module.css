@@ -1,0 +1,57 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 512px;
+  width: 100%;
+  background-image: url("/src/assets/User/home-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin-bottom: 96px;
+}
+
+.title {
+  font-family: "Poppins", serif;
+  letter-spacing: 2px;
+  color: #f4f4f4;
+}
+
+.description {
+  font-family: "Poppins", serif;
+  font-size: 0.875rem;
+  color: #ebebeb;
+  margin-top: 16px;
+  width: 448px;
+}
+
+@media screen and (max-width: 1024px) {
+  .home {
+    margin-bottom: 240px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    width: 386px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.125rem;
+    text-align: center;
+    width: 90%;
+  }
+
+  .description {
+    text-align: center;
+    width: 90%;
+  }
+}

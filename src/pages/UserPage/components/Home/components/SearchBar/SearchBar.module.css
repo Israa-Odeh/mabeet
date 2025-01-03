@@ -1,0 +1,44 @@
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #fafafa;
+  padding: 24px;
+  border-radius: 24px;
+  position: absolute;
+  bottom: -48px;
+  border: 1px solid #20292d;
+}
+
+.datePickersContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.searchButton {
+  width: 96px;
+  height: 48px;
+  background-color: #20292de0;
+  font-size: 1rem;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.searchButton:hover {
+  background-color: #20292dce;
+}
+
+@media screen and (max-width: 1024px) {
+  .searchBar {
+    width: 100%;
+    flex-direction: column;
+    bottom: -192px;
+  }
+
+  .datePickersContainer,
+  .searchButton {
+    width: 100%;
+  }
+}

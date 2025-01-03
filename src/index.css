@@ -2,3 +2,14 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+:root {
+  --z-index-navbar: 100;
+  --z-index-sidebar: 200;
+  --z-index-button: 250;
+  --z-index-dropdown-menu: 300;
+  --z-index-modal-popup: 400;
+  --z-index-overlay-background: 500;
+  --z-index-tooltip-info: 600;
+  --z-index-topmost-layer: 9999;
+}

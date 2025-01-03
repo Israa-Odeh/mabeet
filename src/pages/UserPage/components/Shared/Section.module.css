@@ -1,0 +1,62 @@
+.container {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 24px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-family: "Poppins", serif;
+  text-align: center;
+  font-weight: 500;
+  color: #20292d;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.title::before,
+.title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 0.5px;
+  background-color: #20292d;
+}
+
+.title::before {
+  left: 0;
+  width: 35%;
+}
+
+.title::after {
+  right: 0;
+  width: 35%;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 20px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .title::before,
+  .title::after {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .title::before,
+  .title::after {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title::before,
+  .title::after {
+    width: 10%;
+  }
+}

@@ -1,0 +1,16 @@
+.customCard {
+  border-radius: 32px 4px 32px 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.customCard:hover {
+  transform: scale(1.05);
+}
+
+.priceRange {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #20292d;
+}

@@ -1,0 +1,29 @@
+.customCard {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hotelPrices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.originalPrice {
+  font-family: "Poppins", serif;
+  font-size: 0.875rem;
+  color: #bc2c29;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #20292d;
+}

@@ -1,0 +1,40 @@
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label {
+  display: inline-block;
+  color: #20292d;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.controlsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 96px;
+}
+
+.button {
+  padding: 4px 8px;
+  color: #20292d;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+}
+
+.value {
+  text-align: center;
+  display: inline-block;
+  padding: 4px 8px;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #20292d;
+}

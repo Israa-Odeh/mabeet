@@ -1,0 +1,73 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #20292d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  z-index: var(--z-index-navbar);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.title {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+}
+
+.menuButton {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.signOutButton {
+  color: #ebebeb;
+}
+
+.signOutButton:hover {
+  color: #d6d6d6;
+}
+
+@media screen and (max-width: 768px) {
+  .menuButton {
+    display: block;
+    color: #fff;
+  }
+
+  .controls {
+    display: none;
+  }
+
+  .controls.showMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: #20292d;
+    border: 1px solid #cccccc47;
+    padding: 16px;
+  }
+
+  .signOutButton {
+    margin-left: auto;
+  }
+}

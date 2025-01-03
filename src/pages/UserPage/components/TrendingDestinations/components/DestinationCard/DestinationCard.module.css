@@ -1,0 +1,14 @@
+.customCard {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.customCard:hover {
+  transform: scale(1.02);
+}
+
+.destinationDescription {
+  font-family: "Poppins", serif;
+  font-size: 0.75rem;
+  color: #555;
+}

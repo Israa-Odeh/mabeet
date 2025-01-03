@@ -1,0 +1,51 @@
+.guestRoomSelector {
+  position: relative;
+  width: 256px;
+}
+
+.toggleButton {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: #20292d;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  padding: 8px;
+  z-index: var(--z-index-dropdown-menu);
+}
+
+.doneButton {
+  width: 100%;
+  margin-top: 8px;
+  background-color: #20292de0;
+  color: #fff;
+  text-transform: none;
+}
+
+.doneButton:hover {
+  background-color: #20292dce;
+}
+
+@media screen and (max-width: 1024px) {
+  .guestRoomSelector {
+    width: 100%;
+  }
+
+  .toggleButton {
+    justify-content: flex-start;
+  }
+}
