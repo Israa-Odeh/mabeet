@@ -1,0 +1,14 @@
+.label {
+  display: inline-block;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.slider {
+  width: 90%;
+  color: #fafafa;
+  height: 2px;
+  margin-left: 8px;
+}
