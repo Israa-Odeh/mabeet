@@ -1,0 +1,74 @@
+.galleryGroup {
+  display: flex;
+  gap: 12px;
+  padding: 32px 0;
+  height: 416px;
+}
+
+.largeImage {
+  flex: 2;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.galleryImage:hover {
+  transform: scale(1.05);
+}
+
+.smallImages {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.smallImagesRow {
+  display: flex;
+  gap: 12px;
+  height: 50%;
+}
+
+.galleryItem {
+  position: relative;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  flex: 1;
+}
+
+.plusPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s;
+}
+
+.plusPlaceholder:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.overlayCount {
+  font-family: "Poppins", serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .galleryGroup {
+    flex-direction: column;
+    height: 600px;
+    padding: 24px 0;
+  }
+}

@@ -1,0 +1,70 @@
+.hotelHeader {
+  padding: 32px 48px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hotelName {
+  font-family: "Poppins", serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  color: #20292d;
+}
+
+.starRating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.starIcon {
+  color: #fbbf24;
+  fill: #fbbf24;
+}
+
+.locationDetails {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mapIcon {
+  color: #4b5563;
+}
+
+.locationText {
+  font-family: "Poppins", serif;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.availableRoomsCard {
+  background-color: #f8fafc;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.roomCount {
+  font-family: "Poppins", serif;
+  display: block;
+  font-size: 1.875rem;
+  font-weight: 500;
+  color: #20292d;
+}
+
+.roomLabel {
+  font-family: "Poppins", serif;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+@media screen and (max-width: 768px) {
+  .hotelHeader {
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+  }
+}

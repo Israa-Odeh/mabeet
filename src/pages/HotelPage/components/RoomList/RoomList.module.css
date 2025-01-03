@@ -1,0 +1,28 @@
+.container {
+  padding: 32px 48px;
+}
+
+.title {
+  text-align: center;
+  font-family: "Poppins", serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #20292d;
+  margin-bottom: 32px;
+}
+
+.roomsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 32px 24px;
+  }
+
+  .roomsGrid {
+    grid-template-columns: 1fr;
+  }
+}

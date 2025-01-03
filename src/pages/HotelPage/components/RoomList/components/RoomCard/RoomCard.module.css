@@ -1,0 +1,121 @@
+.roomCard {
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  aspect-ratio: 2/1;
+}
+
+.roomImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  padding: 24px;
+}
+
+.roomHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.roomType {
+  font-family: "Poppins", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #20292d;
+  margin-bottom: 8px;
+}
+
+.capacity {
+  font-family: "Poppins", serif;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.priceInfo {
+  text-align: right;
+}
+
+.price {
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #20292d;
+}
+
+.perNight {
+  font-family: "Poppins", serif;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.amenities {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+}
+
+.amenitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amenityIcon {
+  color: #20292d;
+}
+
+.amenityName {
+  font-family: "Poppins", serif;
+  font-size: 0.875rem;
+}
+
+.bookButton {
+  font-family: "Poppins", serif;
+  background-color: #20292d;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  text-transform: none;
+  transition: background-color 0.2s;
+}
+
+.bookButton:hover {
+  background-color: rgba(32, 41, 45, 0.872);
+}
+
+@media screen and (max-width: 480px) {
+  .roomHeader {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .priceInfo {
+    text-align: left;
+  }
+
+  .amenitiesGrid {
+    grid-template-columns: 1fr;
+  }
+}
