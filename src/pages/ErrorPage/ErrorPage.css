@@ -1,0 +1,20 @@
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .error-page__image {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .error-page__image {
+    width: 300px;
+    height: 300px;
+  }
+}
