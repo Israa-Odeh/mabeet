@@ -1,0 +1,90 @@
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f7fafc;
+  padding: 32px 16px;
+}
+
+.cardContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.confirmationNumber {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", serif;
+  text-align: center;
+  padding: 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.label {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+}
+
+.actions {
+  padding: 32px;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.printButton {
+  width: 100%;
+  padding: 14px;
+  background-color: #20292d;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Poppins", serif;
+  text-transform: none;
+}
+
+.printButton:hover {
+  background-color: rgba(32, 41, 45, 0.872);
+}
+
+@media print {
+  .pageContainer {
+    padding: 0;
+    background-color: #fff;
+  }
+
+  .cardContainer {
+    box-shadow: none;
+    border: 1px solid #20292d;
+  }
+
+  .actions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pageContainer {
+    padding: 0;
+  }
+
+  .cardContainer {
+    border-radius: 0;
+  }
+
+  .detailsContainer {
+    padding: 16px;
+  }
+
+  .actions {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,31 @@
+.title {
+  font-family: "Poppins", serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #20292d;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-family: "Poppins", serif;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.value {
+  font-family: "Poppins", serif;
+  color: #20292d;
+}

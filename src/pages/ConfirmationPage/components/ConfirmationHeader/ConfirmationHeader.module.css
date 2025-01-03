@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 32px;
+  background-color: #20292d;
+  color: #fff;
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #205839;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.title {
+  font-family: "Poppins", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 24px;
+}
+
+.subtitle {
+  font-family: "Poppins", serif;
+  font-size: 0.875rem;
+  color: #aeaeae;
+}

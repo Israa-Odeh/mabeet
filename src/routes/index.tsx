@@ -8,6 +8,7 @@ import {
   SearchResultsPage,
   HotelPage,
   CheckoutPage,
+  ConfirmationPage,
 } from "@pages/index";
 
 export const router = createBrowserRouter([
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute role="User">
             <CheckoutPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "confirmation",
+        element: (
+          <ProtectedRoute role="User">
+            <ConfirmationPage />
           </ProtectedRoute>
         ),
       },
