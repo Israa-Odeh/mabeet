@@ -1,0 +1,11 @@
+.closeButton {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}

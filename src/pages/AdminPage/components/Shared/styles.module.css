@@ -1,0 +1,39 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", serif;
+  font-size: 1rem;
+  color: #20292d;
+  background-color: #20292d0a;
+  border-radius: 8px;
+  height: 320px;
+}
+
+.gridContainer {
+  height: auto;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.createButton {
+  font-family: "Poppins", serif;
+  padding: 8px 32px;
+  background-color: #20292d;
+  text-transform: none;
+}
+
+.createButton:hover {
+  background-color: rgba(32, 41, 45, 0.872);
+}
+
+@media screen and (max-width: 768px) {
+  .createButton {
+    width: 100%;
+  }
+}

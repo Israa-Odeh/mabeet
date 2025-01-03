@@ -1,0 +1,41 @@
+.drawer {
+  transition: width 0.2s;
+}
+
+.drawerPaper {
+  background-color: #fafafa;
+}
+
+.drawerContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #20292d;
+  border-left: 4px solid transparent;
+}
+
+.navLink:hover {
+  background-color: rgba(32, 41, 45, 0.04);
+}
+
+.navLink.active {
+  font-weight: 500;
+  background-color: rgba(32, 41, 45, 0.12);
+  border-left: 4px solid #20292d;
+}
+
+.icon {
+  color: #20292d;
+}
+
+.signOutItem {
+  border-top: 1px solid #e0e0e0;
+  margin-top: auto;
+}

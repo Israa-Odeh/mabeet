@@ -1,9 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import AppShellLayout from "@layouts/AppShellLayout";
 import AuthRedirector from "./AuthRedirector";
 import ProtectedRoute from "./ProtectedRoute";
+import { CitiesGrid, HotelsGrid } from "@pages/AdminPage/components";
 import {
   ErrorPage,
+  AdminPage,
   UserPage,
   SearchResultsPage,
   HotelPage,
@@ -18,6 +20,19 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <AuthRedirector /> },
+      {
+        path: "admin",
+        element: (
+          <ProtectedRoute role="Admin">
+            <AdminPage />
+          </ProtectedRoute>
+        ),
+        children: [
+          { index: true, element: <Navigate to="cities" /> },
+          { path: "cities", element: <CitiesGrid /> },
+          { path: "hotels", element: <HotelsGrid /> },
+        ],
+      },
       {
         path: "user",
         element: (

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  overflow: hidden;
+}
+
+.appBar {
+  background-color: #20292d;
+}
+
+.toolbar {
+  justify-content: space-between;
+}
+
+.title {
+  color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+}
+
+.content {
+  width: 100%;
+  padding: 92px 24px 24px;
+}
+
+.contentWithSidebarOpen {
+  width: calc(100% - 224px);
+}
