@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DialogState } from "./types";
-import { useCities } from "../CitiesGrid/hooks/useCities";
-import { useHotels } from "./hooks/useHotels";
+import { useCities } from "../CitiesGrid/hooks";
+import { useHotels, useDeleteHotel } from "./hooks";
 import { useSnackbar, Snackbar } from "@components/Snackbar";
 import { HotelFormValues } from "@api/admin/hotels";
 import {
@@ -10,13 +10,15 @@ import {
   DataGrid,
   GridPaginationModel,
 } from "@mui/x-data-grid";
-import Button from "@mui/material/Button";
+import { Button, IconButton } from "@mui/material";
 import { HOTELS_COLUMNS } from "./constants";
 import { TextField } from "@mui/material";
 import { textFieldStyles } from "@containers/Shared/styles";
 import { dataGridStyles } from "../Shared/styles";
 import { CreateHotelForm, UpdateHotelForm } from "./components";
 import RoomsGrid from "../RoomsGrid";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ConfirmationDialog from "@components/ConfirmationDialog";
 import styles from "../Shared/styles.module.css";
 
 const HotelsGrid = () => {
@@ -26,6 +28,7 @@ const HotelsGrid = () => {
     page: 0,
   });
   const [dialogState, setDialogState] = useState<DialogState>({ type: "none" });
+  const [hotelToDelete, setHotelToDelete] = useState<number | null>(null);
   const [roomsDialog, setRoomsDialog] = useState<{
     open: boolean;
     hotelId: number | null;
@@ -42,6 +45,7 @@ const HotelsGrid = () => {
     isLoading,
     isError,
   } = useHotels(searchTerm, paginationModel.pageSize, paginationModel.page + 1);
+  const { mutate: deleteHotel } = useDeleteHotel();
 
   const hotels = hotelsData?.hotels ?? [];
   const totalRows = hotelsData?.totalItemsCount ?? 0;
@@ -75,34 +79,62 @@ const HotelsGrid = () => {
     }
   };
 
+  const handleDeleteClick = (hotelId: number) => {
+    setHotelToDelete(hotelId);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (hotelToDelete) {
+      deleteHotel(hotelToDelete);
+      setHotelToDelete(null);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setHotelToDelete(null);
+  };
+
   const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setPaginationModel((prev) => ({ ...prev, page: 0 }));
   };
 
-  const actionsColumn: GridColDef[] = [
+  const columnsWithActions: GridColDef[] = [
+    ...HOTELS_COLUMNS,
     {
       field: "actions",
       headerName: "Actions",
-      width: 140,
+      width: 200,
+      sortable: false,
       renderCell: (params) => (
-        <Button
-          disableElevation
-          disableRipple
-          onClick={() => openRoomsDialog(params.row.id, params.row.name)}
-          sx={{
-            color: "#20292d",
-            textTransform: "none",
-            fontFamily: "Poppins, serif",
-          }}
-        >
-          View Rooms
-        </Button>
+        <div style={{ display: "flex", gap: "8px" }}>
+          <Button
+            disableElevation
+            disableRipple
+            onClick={() => openRoomsDialog(params.row.id, params.row.name)}
+            sx={{
+              color: "#20292d",
+              textTransform: "none",
+              fontFamily: "Poppins, serif",
+            }}
+          >
+            View Rooms
+          </Button>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteClick(params.row.id);
+            }}
+            color="error"
+            size="small"
+            title="Delete hotel"
+          >
+            <DeleteIcon />
+          </IconButton>
+        </div>
       ),
     },
   ];
-
-  const fullColumns = HOTELS_COLUMNS.concat(actionsColumn);
 
   if (isError) {
     return (
@@ -134,7 +166,7 @@ const HotelsGrid = () => {
         <div className={styles.gridContainer}>
           <DataGrid
             rows={hotels}
-            columns={fullColumns}
+            columns={columnsWithActions}
             paginationModel={paginationModel}
             onPaginationModelChange={handlePaginationModelChange}
             pageSizeOptions={[4]}
@@ -159,6 +191,14 @@ const HotelsGrid = () => {
           Create Hotel
         </Button>
       </div>
+
+      <ConfirmationDialog
+        open={!!hotelToDelete}
+        title="Delete Hotel"
+        message="Are you sure you want to delete this hotel? This action cannot be undone."
+        onConfirm={handleDeleteConfirm}
+        onCancel={handleDeleteCancel}
+      />
 
       {dialogState.type === "create" && (
         <CreateHotelForm open={true} onClose={closeDialog} cities={cities} />

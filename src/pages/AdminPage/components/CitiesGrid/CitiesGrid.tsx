@@ -1,21 +1,26 @@
 import { useState } from "react";
 import { DialogState } from "./types";
-import { useCities } from "./hooks/useCities";
+import { useCities, useDeleteCity } from "./hooks";
 import { useSnackbar, Snackbar } from "@components/Snackbar";
 import { City, CityWithHotelCounts } from "@api/admin/cities";
-import { GridRowParams, DataGrid } from "@mui/x-data-grid";
-import { TextField, Button } from "@mui/material";
-import { textFieldStyles } from "@containers/Shared/styles";
+import { GridRowParams, GridColDef, DataGrid } from "@mui/x-data-grid";
 import { CITIES_COLUMNS } from "./constants";
+import { IconButton, TextField, Button } from "@mui/material";
+import { textFieldStyles } from "@containers/Shared/styles";
 import { dataGridStyles } from "../Shared/styles";
+import ConfirmationDialog from "@components/ConfirmationDialog";
 import { CreateCityForm, UpdateCityForm } from "./components";
+import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "../Shared/styles.module.css";
 
 const CitiesGrid = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [dialogState, setDialogState] = useState<DialogState>({ type: "none" });
+  const [cityToDelete, setCityToDelete] = useState<number | null>(null);
+
   const { data: cities = [], isLoading, isError } = useCities(searchTerm);
   const { open, handleClose } = useSnackbar(isError);
+  const { mutate: deleteCity } = useDeleteCity();
 
   const openDialog = (type: DialogState["type"], city?: City) => {
     setDialogState({ type, selectedCity: city });
@@ -32,9 +37,44 @@ const CitiesGrid = () => {
     }
   };
 
-  const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+  const handleDeleteClick = (cityId: number) => {
+    setCityToDelete(cityId);
   };
+
+  const handleDeleteConfirm = () => {
+    if (cityToDelete) {
+      deleteCity(cityToDelete);
+      setCityToDelete(null);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setCityToDelete(null);
+  };
+
+  const columnsWithDelete: GridColDef[] = [
+    ...CITIES_COLUMNS,
+    {
+      field: "actions",
+      headerName: "Actions",
+      align: "center",
+      headerAlign: "center",
+      width: 128,
+      sortable: false,
+      renderCell: (params) => (
+        <IconButton
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteClick(params.row.id);
+          }}
+          color="error"
+          size="small"
+        >
+          <DeleteIcon />
+        </IconButton>
+      ),
+    },
+  ];
 
   if (isError) {
     return (
@@ -54,7 +94,7 @@ const CitiesGrid = () => {
         label="Search Cities"
         variant="outlined"
         value={searchTerm}
-        onChange={handleSearchTermChange}
+        onChange={(e) => setSearchTerm(e.target.value)}
         sx={{ ...textFieldStyles, marginBottom: "16px" }}
       />
       {isLoading ? (
@@ -65,7 +105,7 @@ const CitiesGrid = () => {
         <div className={styles.gridContainer}>
           <DataGrid
             rows={cities}
-            columns={CITIES_COLUMNS}
+            columns={columnsWithDelete}
             initialState={{
               pagination: {
                 paginationModel: {
@@ -80,7 +120,6 @@ const CitiesGrid = () => {
           />
         </div>
       )}
-
       <div className={styles.buttonContainer}>
         <Button
           disableElevation
@@ -92,6 +131,14 @@ const CitiesGrid = () => {
           Create City
         </Button>
       </div>
+
+      <ConfirmationDialog
+        open={!!cityToDelete}
+        title="Delete City"
+        message="Are you sure you want to delete this city? This action cannot be undone."
+        onConfirm={handleDeleteConfirm}
+        onCancel={handleDeleteCancel}
+      />
 
       {dialogState.type === "create" && (
         <CreateCityForm open={true} onClose={closeDialog} />

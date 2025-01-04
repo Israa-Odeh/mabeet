@@ -37,7 +37,7 @@ const Sidebar = ({
 
   return (
     <Drawer
-      sx={{ width: 224 }}
+      sx={{ width: openDrawer ? 224 : 0 }}
       className={styles.drawer}
       classes={{
         paper: styles.drawerPaper,

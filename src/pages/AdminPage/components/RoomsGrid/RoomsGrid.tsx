@@ -1,12 +1,14 @@
 import { RoomsGridProps, DialogState } from "./types";
 import { useState } from "react";
-import useRooms from "./hooks/useRooms";
+import { useRooms, useDeleteRoom } from "./hooks";
 import { useSnackbar, Snackbar } from "@components/Snackbar";
-import { GridRowParams, DataGrid } from "@mui/x-data-grid";
+import { GridRowParams, GridColDef, DataGrid } from "@mui/x-data-grid";
 import { Room } from "@api/hotel";
 import EntityDialog from "@containers/EntityDialog";
 import { IconButton, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ConfirmationDialog from "@components/ConfirmationDialog";
 import { roomsColumns } from "./columns";
 import { CreateRoomForm, UpdateRoomForm } from "./components";
 import { dataGridStyles } from "../Shared/styles";
@@ -20,7 +22,10 @@ const RoomsGrid = ({
   hotelName,
 }: RoomsGridProps) => {
   const [dialogState, setDialogState] = useState<DialogState>({ type: "none" });
-  const { data: rooms = [], isLoading, isError } = useRooms(hotelId);
+  const [roomToDelete, setRoomToDelete] = useState<number | null>(null);
+
+  const { data: rooms = [], isError } = useRooms(hotelId);
+  const { mutate: deleteRoom } = useDeleteRoom();
   const { open: snackbarOpen, handleClose: handleSnackbarClose } =
     useSnackbar(isError);
 
@@ -39,13 +44,44 @@ const RoomsGrid = ({
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className={sharedStyles.loadingContainer}>
-        Loading rooms. Please wait...
-      </div>
-    );
-  }
+  const handleDeleteClick = (roomId: number) => {
+    setRoomToDelete(roomId);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (roomToDelete) {
+      deleteRoom({ roomId: roomToDelete, hotelId });
+      setRoomToDelete(null);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setRoomToDelete(null);
+  };
+
+  const columnsWithDelete: GridColDef[] = [
+    ...roomsColumns,
+    {
+      field: "actions",
+      headerName: "Actions",
+      align: "center",
+      headerAlign: "center",
+      width: 128,
+      sortable: false,
+      renderCell: (params) => (
+        <IconButton
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteClick(params.row.roomId);
+          }}
+          color="error"
+          size="small"
+        >
+          <DeleteIcon />
+        </IconButton>
+      ),
+    },
+  ];
 
   if (isError) {
     return (
@@ -75,7 +111,7 @@ const RoomsGrid = ({
       <div>
         <DataGrid
           rows={rooms}
-          columns={roomsColumns}
+          columns={columnsWithDelete}
           getRowId={(row: Room) => row.roomId}
           initialState={{
             pagination: {
@@ -100,6 +136,14 @@ const RoomsGrid = ({
             Create Room
           </Button>
         </div>
+
+        <ConfirmationDialog
+          open={!!roomToDelete}
+          title="Delete Room"
+          message="Are you sure you want to delete this room? This action cannot be undone."
+          onConfirm={handleDeleteConfirm}
+          onCancel={handleDeleteCancel}
+        />
 
         {dialogState.type === "create" && (
           <CreateRoomForm open={true} onClose={closeDialog} hotelId={hotelId} />

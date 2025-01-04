@@ -1,0 +1,16 @@
+.title {
+  font-size: 1.125rem;
+}
+
+.content {
+  font-family: "Poppins", serif;
+}
+
+.button {
+  font-family: "Poppins", serif;
+  text-transform: none;
+}
+
+.confirmButton {
+  background-color: #20292d;
+}

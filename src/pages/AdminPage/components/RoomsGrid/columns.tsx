@@ -55,7 +55,7 @@ export const roomsColumns: GridColDef[] = [
     field: "roomAmenities",
     headerName: "Amenities",
     flex: 1,
-    minWidth: 200,
+    minWidth: 256,
     align: "center",
     headerAlign: "center",
     renderCell: (params) => (
