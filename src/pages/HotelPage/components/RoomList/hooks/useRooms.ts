@@ -15,6 +15,7 @@ export const useRooms = (
         format(checkInDate, "dd-MM-yyyy"),
         format(checkOutDate, "dd-MM-yyyy")
       ),
+    refetchOnWindowFocus: false,
     enabled: !!hotelId,
   });
 };
