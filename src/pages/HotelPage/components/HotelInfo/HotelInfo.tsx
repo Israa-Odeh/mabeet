@@ -10,16 +10,14 @@ const HotelInfo = ({ hotelId }: { hotelId: number }) => {
     isError: hasHotelError,
   } = useHotelInfo(hotelId);
 
-  const {
-    data: nearbyHotels,
-    isLoading: isLoadingNearby,
-    isError: hasNearbyError,
-  } = useNearbyHotels(hotel?.cityId!);
+  const { data: nearbyHotels, isLoading: isLoadingNearby } = useNearbyHotels(
+    hotel?.cityId!
+  );
 
   const { isLoaded: isMapLoaded } = useGoogleMaps();
 
   const isLoading = isLoadingHotel || isLoadingNearby || !isMapLoaded;
-  const hasError = hasHotelError || hasNearbyError || !hotel;
+  const hasError = hasHotelError || !hotel;
   const { open, handleClose } = useSnackbar(hasError);
 
   if (isLoading) return <CircularProgressComponent />;
