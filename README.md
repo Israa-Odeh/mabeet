@@ -2,6 +2,16 @@
 
 A web application for booking accommodations, built with React and TypeScript. The platform offers a seamless experience for users to search and book accommodations, while providing administrators with essential management capabilities.
 
+## Live Demo
+
+🔗 [Mabeet on Netlify](https://courageous-belekoy-71ece2.netlify.app/)
+
+## Src Folder Structure
+
+The project follows a well-structured folder hierarchy for maintainability and scalability.
+
+![Src folder structure](https://github.com/user-attachments/assets/3b3b787a-4938-44ea-81b1-ebc0ceba5163)
+
 ## Steps to Set Up the Project
 
 ### 1. Clone the repository
