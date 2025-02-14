@@ -196,7 +196,7 @@ The admin dashboard provides essential management capabilities:
 
 #### Hotel Management
 
-![Hotel management - 1](https://github.com/user-attachments/assets/aefc0a49-86f3-494f-8057-3449b9424e6a)
+![Hotel management](https://github.com/user-attachments/assets/aefc0a49-86f3-494f-8057-3449b9424e6a)
 
 **Error:** Unable to load hotels. Please try again later.
 
