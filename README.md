@@ -4,7 +4,7 @@ A web application for booking accommodations, built with React and TypeScript. T
 
 ## Live Demo
 
-🔗 [Mabeet on Netlify](https://courageous-belekoy-71ece2.netlify.app/)
+🔗 [Mabeet on Netlify](https://mabeet.netlify.app)
 
 ## Src Folder Structure
 
