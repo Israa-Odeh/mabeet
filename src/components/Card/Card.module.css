@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.thumbnailWrapper {
+  height: 160px;
+}
+
 .thumbnail {
   width: 100%;
   height: 160px;

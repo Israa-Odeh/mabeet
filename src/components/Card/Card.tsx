@@ -11,7 +11,9 @@ const Card = ({
   onClick,
 }: CardProps) => (
   <div className={`${styles.card} ${cardClassName || ""}`} onClick={onClick}>
-    <img src={imageUrl} alt={altText} className={styles.thumbnail} />
+    <div className={styles.thumbnailWrapper}>
+      <img src={imageUrl} alt={altText} className={styles.thumbnail} />
+    </div>
     <div className={styles.info}>
       <h3 className={styles.heading}>{heading}</h3>
       <p className={styles.region}>{region}</p>
